@@ -2,6 +2,6 @@
 
 namespace Gravel {
     void Init() {
-        Grapple::APP_LOCATION = L"C:\\Program Files\\WindowsApps\\MyApp";
+        Grapple::APP_LOCATION = L"C:\\Program Files\\WindowsApps\\MyApp"; 
     }
 }
