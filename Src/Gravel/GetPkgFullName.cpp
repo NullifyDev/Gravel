@@ -1,4 +1,4 @@
-#include "gravel.h"
+#include "GetPkgFullName.hpp"
 
 namespace Gravel {
     LPCWSTR GetPkgFullName(HWND hWnd) {

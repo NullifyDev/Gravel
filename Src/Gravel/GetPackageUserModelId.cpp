@@ -1,6 +1,6 @@
-#include <windows.h>
-#include <iostream>
-#include <string.h>
+//#include <windows.h>
+//#include <iostream>
+//#include <string.h>
 
 //std::string GetPackageUserModelId(std::wstring *packageName)
 //{

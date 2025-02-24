@@ -1,4 +1,5 @@
-#include "gravel.h"
+#include "Set.hpp"
+
 namespace Gravel {
 	namespace Grapple {
 		BOOL Set(LPVOID* origAddress, LPVOID* hookFunction, LPVOID* trampFunction)

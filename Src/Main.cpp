@@ -6,13 +6,13 @@
 #include <tchar.h>
 #include <Shlobj.h>
 
-#include "Gravel/gravel.h"
+#include "Gravel/Gravel.hpp"
 
 #define IMPORT extern __declspec(dllimport)
 
-IMPORT int __argc;
-IMPORT char** __argv;
-IMPORT wchar_t** __wargv;
+//IMPORT int __argc;
+//IMPORT char** __argv;
+//IMPORT wchar_t** __wargv;
 
 // Turning this into a normal Windows program so it's invisible when run
 int main(int argc, wchar_t *argv[]) // CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)

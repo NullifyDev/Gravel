@@ -1,4 +1,4 @@
-#include "gravel.h"
+#include "LaunchSuspended.hpp"
 
 namespace Gravel {
     HRESULT LaunchSuspended(HWND hWnd, LPCWSTR appFullName/*, PDWORD pdwProcessId*/)
@@ -20,7 +20,7 @@ namespace Gravel {
 
         // Launch the application using the function discussed in the Launching a UWP App section
         DWORD dwProcessId = 0;
-        hResult = Gravel::Launch(appFullName, &dwProcessId);
+        hResult = Gravel::Launch(hWnd, appFullName, &dwProcessId);
         if (hResult != S_OK) return hResult;
 
 
