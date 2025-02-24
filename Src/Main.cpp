@@ -23,7 +23,6 @@ int main(int argc, wchar_t *argv[]) // CALLBACK WinMain(HINSTANCE hInstance, HIN
     for (int i = 1; i < argc; i++)
     {
         if (std::wcscmp(argv[i], L"start")) {
-
             Gravel::LaunchSuspended(hwnd, argv[++i]);
         }
     }

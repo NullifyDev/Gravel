@@ -6,6 +6,7 @@
 
 #include "../GrappleVars.hpp"
 #include "HfnCreateFileW.hpp"
+#include "Attach.hpp"
 
 namespace Gravel {
     namespace Grapple {

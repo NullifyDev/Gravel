@@ -24,25 +24,16 @@
     <ClCompile Include="Src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Gravel\Grapple\AppIdFromFullName.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Gravel\Grapple\Attach.cpp">
+    <ClCompile Include="Src\Gravel\GetPackageUserModelId.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Gravel\GetPkgFullName.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Gravel\GetPackageUserModelId.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Gravel\GrabPackageName.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Gravel\Grapple\HfnCreateFileW.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Gravel\Grapple\Initialize.cpp">
+    <ClCompile Include="Src\Gravel\Init.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Gravel\Launch.cpp">
@@ -54,18 +45,48 @@
     <ClCompile Include="Src\Gravel\PackageFullNameFromFamilyName.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Gravel\Grapple\Uninitialize.cpp">
+    <ClCompile Include="Src\Gravel\Grapple\AppIdFromFullName.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Gravel\Init.cpp">
+    <ClCompile Include="Src\Gravel\Grapple\Attach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Gravel\Grapple\HfnCreateFileW.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Gravel\Grapple\Initialize.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Gravel\Grapple\Set.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Gravel\Grapple\Uninitialize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Gravel\GetPkgFullName.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Gravel\Grapple.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Gravel\GrappleVars.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Gravel\Gravel.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Gravel\Init.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Gravel\Launch.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Gravel\LaunchSuspended.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Gravel\PackageFullNameFromFamilyName.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Gravel\Grapple\AppIdFromFullName.hpp">
@@ -74,13 +95,7 @@
     <ClInclude Include="Src\Gravel\Grapple\Attach.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Gravel\GetPkgFullName.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Gravel\Grapple\HfnCreateFileW.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Gravel\Init.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Gravel\Grapple\Initialize.hpp">
@@ -90,21 +105,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Gravel\Grapple\Uninitialize.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Gravel\PackageFullNameFromFamilyName.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Gravel\LaunchSuspended.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Gravel\Launch.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Gravel\GrappleVars.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Gravel\Grapple.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

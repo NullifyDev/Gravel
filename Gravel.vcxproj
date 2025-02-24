@@ -18,47 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Src\AppNotif.cpp" />
-    <ClCompile Include="Src\gravel.cpp" />
-    <ClCompile Include="Src\Gravel\Grapple\AppIdFromFullName.cpp" />
-    <ClCompile Include="Src\Gravel\Grapple\Attach.cpp" />
-    <ClCompile Include="Src\Gravel\GetPkgFullName.cpp" />
-    <ClCompile Include="Src\Gravel\GetPackageUserModelId.cpp" />
-    <ClCompile Include="Src\Gravel\GrabPackageName.cpp" />
-    <ClCompile Include="Src\Gravel\Grapple\HfnCreateFileW.cpp" />
-    <ClCompile Include="Src\Gravel\Init.cpp" />
-    <ClCompile Include="Src\Gravel\Grapple\Initialize.cpp" />
-    <ClCompile Include="Src\Gravel\Launch.cpp" />
-    <ClCompile Include="Src\Gravel\LaunchSuspended.cpp" />
-    <ClCompile Include="Src\Gravel\PackageFullNameFromFamilyName.cpp" />
-    <ClCompile Include="Src\Gravel\Grapple\Set.cpp" />
-    <ClCompile Include="Src\Gravel\Grapple\Uninitialize.cpp" />
-    <ClCompile Include="Src\Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Src\Gravel\Grapple.hpp" />
-    <ClInclude Include="Src\Gravel\Grapple\AppIdFromFullName.hpp" />
-    <ClInclude Include="Src\Gravel\Grapple\Attach.hpp" />
-    <ClInclude Include="Src\Gravel\GetPkgFullName.hpp" />
-    <ClInclude Include="Src\Gravel\GrappleVars.hpp" />
-    <ClInclude Include="Src\Gravel\Gravel.hpp" />
-    <ClInclude Include="Src\Gravel\Grapple\HfnCreateFileW.hpp" />
-    <ClInclude Include="Src\Gravel\Init.hpp" />
-    <ClInclude Include="Src\Gravel\Grapple\Initialize.hpp" />
-    <ClInclude Include="Src\Gravel\Launch.hpp" />
-    <ClInclude Include="Src\Gravel\LaunchSuspended.hpp" />
-    <ClInclude Include="Src\Gravel\PackageFullNameFromFamilyName.hpp" />
-    <ClInclude Include="Src\Gravel\Grapple\Set.hpp" />
-    <ClInclude Include="Src\Gravel\Grapple\Uninitialize.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="vcpkg.json" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{cc3a6c16-b81f-4c23-8272-7e511bd62d31}</ProjectGuid>
+    <ProjectGuid>{839fbeb0-023c-4049-9b43-44d4480e23e8}</ProjectGuid>
     <RootNamespace>Gravel</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -107,14 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VCInstallDir)atlmfc\lib;$(IncludePath)</IncludePath>
-    <LibraryPath>$(VCInstallDir)atlmfc\lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VCInstallDir)atlmfc\lib;$(IncludePath)</IncludePath>
-    <LibraryPath>$(VCInstallDir)atlmfc\lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
   </PropertyGroup>
@@ -123,7 +78,6 @@
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgUseStatic>true</VcpkgUseStatic>
-    <VcpkgConfiguration>Debug</VcpkgConfiguration>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -159,15 +113,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main</EntryPointSymbol>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -178,19 +127,51 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>main</EntryPointSymbol>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\AppNotif.cpp" />
+    <ClCompile Include="Src\gravel.cpp" />
+    <ClCompile Include="Src\Gravel\GetPackageUserModelId.cpp" />
+    <ClCompile Include="Src\Gravel\GetPkgFullName.cpp" />
+    <ClCompile Include="Src\Gravel\GrabPackageName.cpp" />
+    <ClCompile Include="Src\Gravel\Grapple\AppIdFromFullName.cpp" />
+    <ClCompile Include="Src\Gravel\Grapple\Attach.cpp" />
+    <ClCompile Include="Src\Gravel\Grapple\HfnCreateFileW.cpp" />
+    <ClCompile Include="Src\Gravel\Grapple\Initialize.cpp" />
+    <ClCompile Include="Src\Gravel\Grapple\Set.cpp" />
+    <ClCompile Include="Src\Gravel\Grapple\Uninitialize.cpp" />
+    <ClCompile Include="Src\Gravel\Init.cpp" />
+    <ClCompile Include="Src\Gravel\Launch.cpp" />
+    <ClCompile Include="Src\Gravel\LaunchSuspended.cpp" />
+    <ClCompile Include="Src\Gravel\PackageFullNameFromFamilyName.cpp" />
+    <ClCompile Include="Src\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Gravel\GetPkgFullName.hpp" />
+    <ClInclude Include="Src\Gravel\Grapple.hpp" />
+    <ClInclude Include="Src\Gravel\GrappleVars.hpp" />
+    <ClInclude Include="Src\Gravel\Grapple\AppIdFromFullName.hpp" />
+    <ClInclude Include="Src\Gravel\Grapple\Attach.hpp" />
+    <ClInclude Include="Src\Gravel\Grapple\HfnCreateFileW.hpp" />
+    <ClInclude Include="Src\Gravel\Grapple\Initialize.hpp" />
+    <ClInclude Include="Src\Gravel\Grapple\Set.hpp" />
+    <ClInclude Include="Src\Gravel\Grapple\Uninitialize.hpp" />
+    <ClInclude Include="Src\Gravel\Gravel.hpp" />
+    <ClInclude Include="Src\Gravel\Init.hpp" />
+    <ClInclude Include="Src\Gravel\Launch.hpp" />
+    <ClInclude Include="Src\Gravel\LaunchSuspended.hpp" />
+    <ClInclude Include="Src\Gravel\PackageFullNameFromFamilyName.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vcpkg.json" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
