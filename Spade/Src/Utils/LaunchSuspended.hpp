@@ -13,7 +13,9 @@
 
 #include "Launch.hpp"
 #include "GrappleVars.hpp"
-#include "Grapple.hpp"
+#include "Grapple\Initialize.hpp"
+#include "Grapple\Uninitialize.hpp"
+
 
 namespace Spade {
     HRESULT LaunchSuspended(LPCWSTR appFullName, PDWORD pid);

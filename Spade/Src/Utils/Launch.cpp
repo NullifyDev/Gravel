@@ -32,9 +32,11 @@ namespace Spade {
         std::wstring newString = originalString.substr(0, firstUnderscore) + L"_" + originalString.substr(lastUnderscore + 1) + L"!App";
         LPCWSTR t = newString.c_str();
 
-        printf("Launching UWP Software\n");
+        printf("Launching UWP Software (");
+        wprintf(t);
+        printf(")\n");
         result = spAppActivationManager->ActivateApplication(t, NULL, AO_NONE, pdw_pid);
-        printf("Done!\n");
+        printf("Done! Launch.ActivateApplication: result: %d\n", result);
 
         return result;
     }

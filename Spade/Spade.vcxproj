@@ -169,8 +169,6 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Src\AppNotif.cpp" />
-    <ClCompile Include="Src\gravel.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\Utils\GetPkgFullName.cpp" />
     <ClCompile Include="Src\Utils\Grapple\AppIdFromFullName.cpp" />
@@ -182,6 +180,7 @@
     <ClCompile Include="Src\Utils\Grapple\Set.cpp" />
     <ClCompile Include="Src\Utils\Grapple\Uninitialize.cpp" />
     <ClCompile Include="Src\Utils\Gravel\Import.cpp" />
+    <ClCompile Include="Src\Utils\Init.cpp" />
     <ClCompile Include="Src\Utils\Launch.cpp" />
     <ClCompile Include="Src\Utils\LaunchSuspended.cpp" />
   </ItemGroup>
@@ -198,6 +197,7 @@
     <ClInclude Include="Src\Utils\Grapple\Set.hpp" />
     <ClInclude Include="Src\Utils\Grapple\Uninitialize.hpp" />
     <ClInclude Include="Src\Utils\Gravel.hpp" />
+    <ClInclude Include="Src\Utils\Initialize.hpp" />
     <ClInclude Include="Src\Utils\Launch.hpp" />
     <ClInclude Include="Src\Utils\LaunchSuspended.hpp" />
     <ClInclude Include="Src\Utils\Spade.hpp" />

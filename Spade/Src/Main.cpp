@@ -10,6 +10,7 @@
 #include "Utils/Spade.hpp"
 #include "Utils/Grapple.hpp"
 #include "Utils/GrappleVars.hpp"
+#include "Utils/Initialize.hpp"
 //#include "Utils/Grapple/Init.hpp"
 //#include "Utils/Grapple/Initialize.hpp"
 
@@ -27,7 +28,7 @@ int wmain(int argc, wchar_t *argv[])
     {
         if (std::wcscmp(std::wstring(argv[i]).c_str(), L"start"))
         {
-            Spade::Grapple::Initialize(argv[i]);
+            Spade::Initialize(argv[i]);
             Spade::LaunchSuspended(argv[i], &pid);
         }
     }

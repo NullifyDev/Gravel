@@ -10,6 +10,6 @@
 
 namespace Spade {
     namespace Grapple {
-        BOOL Initialize(std::wstring app);
+        BOOL Initialize();
     }
 }

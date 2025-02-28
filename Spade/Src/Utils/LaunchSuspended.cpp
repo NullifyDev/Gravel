@@ -5,8 +5,6 @@ namespace Spade {
     {
         printf("LaunchSuspended: hit!\n");
 
-        Spade::Grapple::Initialize(appFullName);
-
         //appFullName = appFullName == NULL ? Spade::GetPkgFullName(hWnd) : appFullName;
         HRESULT hResult = S_OK;
 
@@ -20,33 +18,34 @@ namespace Spade {
 
         hResult = Spade::Launch(appFullName, pid);
         if (hResult != S_OK) return hResult;
-        
-        
 
         std::wstringstream wss;
-        wss << L"C:\\Users\\Saturn\\source\\repos\\Gravel\\x64\\Debug\\Gravel.exe -p " << *pid << L" mods " << Spade::Grapple::MOD_FILES_PATH;
-        LPCWSTR p = wss.str().c_str();
 
-        wprintf(p);
+        wchar_t buffer[MAX_PATH] = { 0 };
+        GetModuleFileName(NULL, buffer, MAX_PATH);
+        
+        std::wstring::size_type pos = std::wstring(buffer).find_last_of(L"\\/");
+        wss << std::wstring(buffer).substr(0, pos).c_str() << L"\\Gravel.exe -p " << *pid << L" mods " << Spade::Grapple::MOD_FILES_PATH;
+        std::wstring p = wss.str().c_str();
+
+        wprintf(wss.str().c_str());
         printf("\n");
 
-        hResult = debugSettings->EnableDebugging(appFullName, p, NULL);
+        hResult = debugSettings->EnableDebugging(appFullName, wss.str().c_str(), NULL);
+        printf("LaunchSuspended: hResult: %d\n", hResult);
         if (hResult != S_OK) {
             printf("[ERROR]: LaunchSuspended - EnableDebugging: %d", hResult);
             return hResult;
         }
         printf("[DEBUG]: ENABLED!\n");
 
-        // HMODULE hmod = LoadLibraryW(L"C:\\Users\\Saturn\\source\\repos\\Gravel\\x64\\Debug\\Gravel.dll");
-        // Spade::Grapple::main gmain = (Spade::Grapple::main)GetProcAddress(hmod, "main");
-
-        /* INJECTION SECTION INJECTION SECTION INJECTION SECTION INJECTION SECTION 
-         * INJECTION SECTION INJECTION SECTION INJECTION SECTION INJECTION SECTION
-         * INJECTION SECTION INJECTION SECTION INJECTION SECTION INJECTION SECTION */
+        Spade::Grapple::Initialize();
 
         hResult = debugSettings->DisableDebugging(appFullName);
         if (hResult != S_OK) return hResult;
+        printf("[DEBUG]: DISABLED! %d\n", hResult);
 
+        Spade::Grapple::Uninitialize();
         return S_OK;
     }
 }

@@ -1,29 +1,26 @@
-#include <Windows.h>
-#include <ShObjIdl.h>
-#include <atlbase.h>
-#include <appmodel.h>
-#include <string>
-#include <io.h>
-#include <fcntl.h>
+//#include <Windows.h>
+//#include <ShObjIdl.h>
+//#include <atlbase.h>
+//#include <appmodel.h>
+//#include <string>
+//#include <io.h>
+//#include <fcntl.h>
 
 #define EXPORT extern "C" __declspec(dllexport)
 
-void InitConsole() {
-    AllocConsole();
-    SetConsoleTitleA("Mod.dll");
-    typedef struct { char* _ptr; int _cnt; char* _base; int _flag; int _file; int _charbuf; int _bufsiz; char* _tmpfname; } FILE_COMPLETE;
-    *(FILE_COMPLETE*)stdout = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_OUTPUT_HANDLE), _O_TEXT), "w");
-    *(FILE_COMPLETE*)stderr = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w");
-    *(FILE_COMPLETE*)stdin = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r");
-    setvbuf(stdout, NULL, _IONBF, 0);
-    setvbuf(stderr, NULL, _IONBF, 0);
-    setvbuf(stdin, NULL, _IONBF, 0);
-}
+//void InitConsole() {
+//    AllocConsole();
+//    SetConsoleTitleA("Mod.dll");
+//    typedef struct { char* _ptr; int _cnt; char* _base; int _flag; int _file; int _charbuf; int _bufsiz; char* _tmpfname; } FILE_COMPLETE;
+//    *(FILE_COMPLETE*)stdout = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_OUTPUT_HANDLE), _O_TEXT), "w");
+//    *(FILE_COMPLETE*)stderr = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w");
+//    *(FILE_COMPLETE*)stdin = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r");
+//    setvbuf(stdout, NULL, _IONBF, 0);
+//    setvbuf(stderr, NULL, _IONBF, 0);
+//    setvbuf(stdin, NULL, _IONBF, 0);
+//}
 
 EXPORT int ModMain(void) {
-    MessageBox(NULL, L"LOADED!", L"Execution State", MB_OK);
-    InitConsole();
-    printf("Mod.dll: Loaded!");
     return 0;
 }
 
