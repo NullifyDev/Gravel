@@ -30,10 +30,6 @@
 
 #include "mscoree.h"
 #include <winrt/windows.foundation.h>
-//#include "pch.h"
-
-
-
 
 const char* strfmt(const char* format, ...) {
     va_list args;
@@ -57,16 +53,6 @@ void InitConsole() {
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
     setvbuf(stdin, NULL, _IONBF, 0);
-}
-
-void AsyncRun(void* arg)
-{
-    HWND gHwnd = (HWND)arg;
-    
-    long i = 0;
-    while (i < LONG_MAX) {
-        SetWindowTextA(gHwnd, strfmt("Asphalt 8: Airborne - %ld", i));
-    }
 }
 
 __declspec(dllexport) int ModMain(HWND gHwnd, HANDLE gThread, HANDLE gHandle)
@@ -99,54 +85,17 @@ __declspec(dllexport) int ModMain(HWND gHwnd, HANDLE gThread, HANDLE gHandle)
     return 0;
 }
 
-
-
-
-
-
-//#include <windows.ui.viewmanagement.h>
-
-//HANDLE hFile = CreateFileW(_T("C:\\Users\\Saturn\\AppData\\Local\\Packages\\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\\AC\\log.txt"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-//DWORD bytesWritten;
-
-//void log(const char* data)
-//{
-//    printf(data);
-//    if (hFile != INVALID_HANDLE_VALUE) 
-//        WriteFile(hFile, data, strlen(data), &bytesWritten, NULL);
-//}
-
-//BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
-//BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID lpReserved)
-//int __cdecl wmain(int argc, WCHAR* argv[])
-//{
-//    InitConsole();
-//    printf("\e\n"); 
-//    //MessageBoxA(NULL, "Loaded", "Mod.dll", MB_OK);
-//
-//    return TRUE;
-//}
-
-//EXPORT void GMain(HWND hWnd, HMODULE hMod) {
-//    MessageBoxA(hWnd, "Mod.dll: GMain called!", "Mod.dll", MB_OK);
-//}
-
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
     std::wstring app, modfolder;
     DWORD pid = 0;
 
-    //InitConsole();
-
     printf("\e");
-    //printf("\nMod.dll: Terminal Hijacked!\n");
 
     switch (ul_reason_for_call)
     {
         case DLL_PROCESS_ATTACH: {
             printf("\nMod.dll: Process Attached!\n");
-            //MessageBoxA(NULL, "Process attached!", "Mod.dll", MB_OK);
-            //BOOL res = Gravel::Initialize(app, modfolder); // If initialization failed, the DLL will detach
             break;
         }
         case DLL_THREAD_ATTACH:
