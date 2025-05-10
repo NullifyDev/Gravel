@@ -71,6 +71,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -79,10 +82,13 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</OutputFile>
+      <ProgramDatabaseFile>$(SolutionDir)bin\$(projectName)_$(ConfigurationName)_$(PreferredToolArchitecture).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -95,12 +101,15 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</OutputFile>
+      <ProgramDatabaseFile>$(SolutionDir)bin\$(projectName)_$(ConfigurationName)_$(PreferredToolArchitecture).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -111,10 +120,13 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</OutputFile>
+      <ProgramDatabaseFile>$(SolutionDir)bin\$(projectName)_$(ConfigurationName)_$(PreferredToolArchitecture).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -127,16 +139,40 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</OutputFile>
+      <ProgramDatabaseFile>$(SolutionDir)bin\$(projectName)_$(ConfigurationName)_$(PreferredToolArchitecture).pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Utils\Attach.cpp" />
+    <ClCompile Include="Src\Utils\Trampolines\HfnCreateFileW.cpp" />
+    <ClCompile Include="Src\Utils\Initialize.cpp" />
+    <ClCompile Include="Src\Utils\Set.cpp" />
+    <ClCompile Include="Src\Utils\Uninitialize.cpp" />
+    <ClCompile Include="Src\Utils\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Utils.hpp" />
+    <ClInclude Include="Src\Utils\Attach.hpp" />
+    <ClInclude Include="Src\Utils\GrappleVars.hpp" />
+    <ClInclude Include="Src\Utils\Trampolines\IGPLib.hpp" />
+    <ClInclude Include="Src\Utils\Trampolines\HfnCreateFileW.hpp" />
+    <ClInclude Include="Src\Utils\Initialize.hpp" />
+    <ClInclude Include="Src\Utils\Set.hpp" />
+    <ClInclude Include="Src\Utils\Uninitialize.hpp" />
+    <ClInclude Include="Src\Utils\Util.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\..\Program Files\WindowsApps\GAMELOFTSA.Asphalt8Airborne_1.0.0.10_x86__0pp20fcewvvtj\IGPLib_Windows_8.dll" />
+    <None Include="vcpkg.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

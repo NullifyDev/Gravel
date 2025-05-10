@@ -4,19 +4,35 @@
     <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommandArguments>-p 4640 mods C:\Users\Saturn\AppData\Local\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>modfolder C:\Users\Saturn\AppData\Local\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</LocalDebuggerCommand>
+    <LocalDebuggerAmpDefaultAccelerator>
+    </LocalDebuggerAmpDefaultAccelerator>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>-p 4640 mods C:\Users\Saturn\AppData\Local\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>modfolder C:\Users\Saturn\AppData\Local\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</LocalDebuggerCommand>
+    <LocalDebuggerAmpDefaultAccelerator>
+    </LocalDebuggerAmpDefaultAccelerator>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LocalDebuggerCommandArguments>-p 4640 mods C:\Users\Saturn\AppData\Local\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>modfolder C:\Users\Saturn\AppData\Local\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</LocalDebuggerCommand>
+    <LocalDebuggerAmpDefaultAccelerator>
+    </LocalDebuggerAmpDefaultAccelerator>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LocalDebuggerCommandArguments>-p 4640 mods C:\Users\Saturn\AppData\Local\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>modfolder C:\Users\Saturn\AppData\Local\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</LocalDebuggerCommand>
+    <LocalDebuggerAmpDefaultAccelerator>
+    </LocalDebuggerAmpDefaultAccelerator>
   </PropertyGroup>
 </Project>

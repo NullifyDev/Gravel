@@ -21,33 +21,32 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{839fbeb0-023c-4049-9b43-44d4480e23e8}</ProjectGuid>
-    <RootNamespace>Spade</RootNamespace>
+    <ProjectGuid>{dfdee202-148a-45e7-a4e7-50d9bdc264db}</ProjectGuid>
+    <RootNamespace>Mod</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Spade</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,15 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Label="Vcpkg">
-    <VcpkgEnableManifest>true</VcpkgEnableManifest>
-  </PropertyGroup>
-  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <VcpkgUseStatic>true</VcpkgUseStatic>
-  </PropertyGroup>
-  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <VcpkgUseStatic>true</VcpkgUseStatic>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -89,18 +79,11 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
-      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-      <OutputFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</OutputFile>
+      <OutputFile>$(LOCALAPPDATA)\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods\$(TargetFileName)</OutputFile>
       <ProgramDatabaseFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(ConfigurationName)\$(TargetFileName).pdb</ProgramDatabaseFile>
     </Link>
-    <CustomBuildStep>
-      <Command>
-      </Command>
-    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -113,20 +96,13 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
-      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-      <OutputFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</OutputFile>
+      <OutputFile>$(LOCALAPPDATA)\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods\$(TargetFileName)</OutputFile>
       <ProgramDatabaseFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(ConfigurationName)\$(TargetFileName).pdb</ProgramDatabaseFile>
     </Link>
-    <CustomBuildStep>
-      <Command>
-      </Command>
-    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -137,18 +113,11 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
-      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-      <OutputFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</OutputFile>
+      <OutputFile>$(LOCALAPPDATA)\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods\$(TargetFileName)</OutputFile>
       <ProgramDatabaseFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(ConfigurationName)\$(TargetFileName).pdb</ProgramDatabaseFile>
     </Link>
-    <CustomBuildStep>
-      <Command>
-      </Command>
-    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -161,43 +130,19 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
-      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-      <OutputFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(Configuration)\$(TargetFileName)</OutputFile>
+      <OutputFile>$(LOCALAPPDATA)\Packages\GAMELOFTSA.Asphalt8Airborne_0pp20fcewvvtj\LocalState\mods\$(TargetFileName)</OutputFile>
       <ProgramDatabaseFile>$(SolutionDir)bin\$(PreferredToolArchitecture)\$(ConfigurationName)\$(TargetFileName).pdb</ProgramDatabaseFile>
     </Link>
-    <CustomBuildStep>
-      <Command>
-      </Command>
-    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Main.cpp" />
-    <ClCompile Include="Src\Spade\GrappleVars.hpp" />
-    <ClCompile Include="Src\Spade\Initialize.cpp" />
-    <ClCompile Include="Src\Spade\Launch.cpp" />
-    <ClCompile Include="Src\Spade\LaunchSuspended.cpp" />
-    <ClCompile Include="Src\Spade\SetPermToPath.cpp" />
-    <ClCompile Include="Src\Spade\Util.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Src\Spade\Grapple.hpp" />
-    <ClInclude Include="Src\Spade\Initialize.hpp" />
-    <ClInclude Include="Src\Spade\SetPermToPath.hpp" />
-    <ClInclude Include="Src\Spade\Util.hpp" />
-    <ClInclude Include="Src\Utils\Gravel.hpp" />
-    <ClInclude Include="Src\Spade\Launch.hpp" />
-    <ClInclude Include="Src\Spade\LaunchSuspended.hpp" />
-    <ClInclude Include="Src\Spade\Spade.hpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
-    <None Include="vcpkg.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

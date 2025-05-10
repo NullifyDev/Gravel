@@ -18,93 +18,48 @@
     <ClCompile Include="Src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utils\GetPkgFullName.cpp">
+    <ClCompile Include="Src\Spade\Launch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utils\Launch.cpp">
+    <ClCompile Include="Src\Spade\LaunchSuspended.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utils\LaunchSuspended.cpp">
+    <ClCompile Include="Src\Spade\GrappleVars.hpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utils\Grapple\AppIdFromFullName.cpp">
+    <ClCompile Include="Src\Spade\Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utils\Grapple\Attach.cpp">
+    <ClCompile Include="Src\Spade\SetPermToPath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utils\Grapple\HfnCreateFileW.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utils\Grapple\Initialize.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utils\Grapple\Set.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utils\Grapple\Uninitialize.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utils\Grapple\PkgIDFromFullName.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utils\Grapple\GetHwndByProcessId.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utils\Gravel\Import.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utils\Init.cpp">
+    <ClCompile Include="Src\Spade\Initialize.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Utils\Grapple.hpp">
+    <ClInclude Include="Src\Spade\Grapple.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utils\GrappleVars.hpp">
+    <ClInclude Include="Src\Spade\Launch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utils\Launch.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\LaunchSuspended.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\Grapple\AppIdFromFullName.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\Grapple\Attach.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\Grapple\HfnCreateFileW.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\Grapple\Initialize.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\Grapple\Set.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\Grapple\Uninitialize.hpp">
+    <ClInclude Include="Src\Spade\LaunchSuspended.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Utils\Gravel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utils\Spade.hpp">
+    <ClInclude Include="Src\Spade\Spade.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utils\GetPkgFullName.hpp">
+    <ClInclude Include="Src\Spade\Util.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utils\Grapple\PkgIDFromFullName.hpp">
+    <ClInclude Include="Src\Spade\SetPermToPath.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utils\Grapple\GetHwndByProcessId.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\Initialize.hpp">
+    <ClInclude Include="Src\Spade\Initialize.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

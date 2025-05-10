@@ -1,45 +1,59 @@
-
-/* DLL INJECTOR - Inject DLLs during the suspension of the target software */
-
 #include <windows.h>
 #include <iostream>
 #include <tchar.h>
 #include <Shlobj.h>
 #include <string>
+#include <roapi.h>
 
-#include "Utils/Spade.hpp"
-#include "Utils/Grapple.hpp"
-#include "Utils/GrappleVars.hpp"
-#include "Utils/Initialize.hpp"
-//#include "Utils/Grapple/Init.hpp"
-//#include "Utils/Grapple/Initialize.hpp"
+#include "Spade/Initialize.hpp"
+#include "Spade/Spade.hpp"
+#include "Spade/Grapple.hpp"
+#include "Spade/GrappleVars.hpp"
+#include "Spade/Util.hpp"
+
+#define EXPORT __declspec(dllexport)
+
+EXPORT void sout_info() {
+    printf("sout is Spade's terminal output");
+}
+EXPORT void sout(const char *msg) {
+    printf(msg);
+}
+EXPORT void soutln(const char* msg) {
+    printf("%s\n", msg);
+}
+
 
 int wmain(int argc, wchar_t *argv[])
 {
+    using namespace Spade;
+    printf("CoInitialize: %d\n", Spade::COINITIALIZED);
+
     //int argc = __argc;
     //wchar_t** argv = __wargv;
 
     HWND hwnd = 0;
     DWORD pid = 0;
-
-    //std::wstring path(L"C:\\Users\\Saturn\\source\\repos\\Gravel\\x64\\Debug\\Gravel.dll");
+    std::wstring mods = L"", launch = L"";
+    LPCWSTR app = L"";
 
     for (int i = 1; i < argc; i++)
     {
-        if (std::wcscmp(std::wstring(argv[i]).c_str(), L"start"))
-        {
-            Spade::Initialize(argv[i]);
-            Spade::LaunchSuspended(argv[i], &pid);
-        }
+        std::wstring flag = std::wstring(argv[i]).c_str();
+
+        if (wstr_cmp(flag.c_str(), L"mods"))
+            mods = argv[++i];
+
+        else if (wstr_cmp(std::wstring(argv[i]).c_str(), L"start"))
+            app = argv[++i];
+    }  
+
+    if (app != NULL) {
+        Spade::Initialize(app, mods);
+        printf("LaunchSuspended: ret %d ", Spade::LaunchSuspended(app, &pid));
     }
-
-    
-
-    // Can do additional error checking to make sure the app is active and not tombstoned
-
-    //ModImporter::InjectMods(dwProcessId);
-    //ProcessUtils::ResumeProcess(dwProcessId); // Uses NtResumeProcess
 
     CoUninitialize();
     return S_OK;
 }
+

@@ -1,6 +1,3 @@
-
-/* DLL INJECTOR - Inject DLLs during the suspension of the target software */
-
 #include <windows.h>
 #include <iostream>
 #include <tchar.h>
@@ -10,14 +7,38 @@
 #include <fstream>
 #include <stdio.h>
 #include <malloc.h>
-#include <io.h>
-#include <fcntl.h>
+
+#include "Utils.hpp"
 
 namespace fs = std::filesystem;
 
-#define IMPORT extern __declspec(dllimport)
+#define IMPORT __declspec(dllimport)
+#define EXPORT __declspec(dllexport)
 
-typedef int(*ModMain)(void); //int (*ModMain)(int, char**);
+typedef NTSTATUS(NTAPI* pNtResumeProcess)(HANDLE ProcessHandle);
+typedef NTSTATUS(NTAPI* pNtResumeThread)(HANDLE ProcessHandle);
+typedef NTSTATUS(WINAPI* pNtQuerySystemInformation)(int, PVOID, ULONG, PULONG);
+
+typedef void(*ModMain)(HWND gHwnd, HANDLE gThread, HANDLE gHandle);
+
+class NT {
+public:
+    
+    pNtResumeProcess ResumeProcess;
+    pNtResumeThread ResumeThread;
+    pNtQuerySystemInformation QuerySystemInformation;
+
+    NT()
+    {
+        ResumeProcess          = (pNtResumeProcess)         GetProcAddress(GetModuleHandleA("NtDll.dll"), "NtResumeProcess");
+        ResumeThread           = (pNtResumeThread)          GetProcAddress(GetModuleHandleA("NtDll.dll"), "NtResumeThread");
+        QuerySystemInformation = (pNtQuerySystemInformation)GetProcAddress(GetModuleHandleA("NtDll.dll"), "NtQuerySystemInformation");
+
+        if (!ResumeProcess)          printf("Failed to get NtResumeProcess\n");
+        if (!ResumeThread)           printf("Failed to get NtResumeThread\n");
+        if (!QuerySystemInformation) printf("Failed to get NtQuerySystemInformation\n");
+    }
+};
 
 typedef struct ModEntry {
     HMODULE hmod;
@@ -29,99 +50,84 @@ typedef struct ModEntry {
     */
 } ModEntry;
 
+typedef struct ModEntries {
+    int Count;
+    ModEntry* Entry;
+} ModEntries;
+
 IMPORT int __argc;
-IMPORT char** __argv;
-//IMPORT wchar_t** __wargv;
+IMPORT wchar_t** __wargv;
 
-// Turning this into a normal Windows program so it's invisible when run
-//CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+int wmain(int argc, wchar_t** argv) {
+    SetConsoleTitleA("Gravel.exe");
+    printf("Initializing!\n");
 
+    using namespace Gravel;
+    std::wstring app, modfolder, args;
+    DWORD pid = 0, tid = 0, parentPid;
+    HANDLE hGame = 0, tGame = 0, hParent = 0;
 
-void InitConsole() {
-    AllocConsole();
-    SetConsoleTitleA("Mod.dll");
-    typedef struct { char* _ptr; int _cnt; char* _base; int _flag; int _file; int _charbuf; int _bufsiz; char* _tmpfname; } FILE_COMPLETE;
-    *(FILE_COMPLETE*)stdout = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_OUTPUT_HANDLE), _O_TEXT), "w");
-    *(FILE_COMPLETE*)stderr = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w");
-    *(FILE_COMPLETE*)stdin = *(FILE_COMPLETE*)_fdopen(_open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r");
-    setvbuf(stdout, NULL, _IONBF, 0);
-    setvbuf(stderr, NULL, _IONBF, 0);
-    setvbuf(stdin, NULL, _IONBF, 0);
-}
-
-BOOL str_cmp(const char* s1, const char* s2) {
-    size_t len = strlen(s1);
-    if (len != strlen(s2)) return FALSE;
-
-    int i = -1;
-    while (i++ < len) 
-        if (s1[i] != s2[i]) 
-            return FALSE;
-
-    return TRUE;
-}
-
-BOOL str_endswith(const char* s1, const char* s2) {
-    size_t len = strlen(s1), len2 = strlen(s2);
-    if (len < len2) return FALSE;
-
-    int i = len-len2-1, j = 0, k = 0;
-    while (i++ < len)
-        if (s1[i] != s2[j++])
-            return FALSE;
-
-    return TRUE;
-}
-
-// BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID lpReserved) {
-int main(int argc, char *argv[]) 
-{
-    InitConsole();
-    
-    HWND hwnd = 0;
-    std::string modsfolder;
-    DWORD pid = 0;
-
-    //int argc = __argc;
-    //char** argv = __argv;
-
-    printf("[GRAVEL]: LAUNCHED!\a \n");
-    GetWindowThreadProcessId(hwnd, &pid);
-
-    for (int i = 1; i < __argc; i++)
+    for (int i = 1; i < argc; i++) 
     {
-        if (str_cmp(__argv[i], "-p")) {
-            pid = atoi(__argv[++i]);
+        if (wstr_cmp(argv[i], L"-p")) {
+            pid = _wtol(argv[++i]);
+            printf("-p: %d\n", pid);
+            hGame = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, pid);
+            //printf("pid %d | \n", pid);
         }
-        else if (str_cmp(__argv[i], "mods")) {
-            modsfolder = __argv[++i];
-            printf("[Mods Imported]\n");
+        else if (wstr_cmp(argv[i], L"-tid")) {
+            tid = _wtol(argv[i]);
+            printf("-tid: %d\n", tid);
+            tGame = OpenThread(THREAD_RESUME, TRUE, tid);
+        }
+        else if (wstr_cmp(argv[i], L"app")) {
 
-            int modcount = 0, i = 0;
-            for (const auto& entry : fs::directory_iterator(modsfolder))
-                if (str_endswith(entry.path().string().c_str(), ".dll"))
-                    modcount++;
-
-            ModEntry* modlist = (ModEntry*)calloc(sizeof(ModEntry), modcount);
-
-            for (const auto& entry : fs::directory_iterator(modsfolder)) {
-                fs::path p = entry.path();
-                HMODULE hModule = 0;
-                ModMain procAddress = 0;
-                if (p.extension() == ".dll") {
-                    hModule = LoadLibraryW(p.c_str());
-                    procAddress = (ModMain)GetProcAddress(hModule, "ModMain");
-
-                    if (procAddress == 0) modcount--;
-                    else modlist[i++] = { hModule, procAddress };
-                }
-            }
-
-            i = -1;
-            while (++i < modcount) {
-                modlist[i].func();
-            }
+            app = argv[++i];
+            // printf("app %ws\n", app.c_str());
+        }
+        else if (wstr_cmp(argv[i], L"modfolder")) {
+            modfolder = argv[++i];
+            // printf("modfolder %ws\n", modfolder.c_str());
+        }
+        else 
+        {
+            printf("[Gravel]: Unknown Argument %ws %ws\n", argv[i], argv[++i]);
         }
     }
-    return S_OK;
+
+    HANDLE phGame = OpenProcess(PROCESS_SUSPEND_RESUME, FALSE, pid);
+    NT *nt = new NT();
+
+    nt->ResumeProcess(phGame);
+
+    printf("[Loading DLLs]\n");
+
+    ModEntries modlist;
+    modlist.Count = 0;
+
+    printf("\nDLLs Found:\n");
+    for (const auto& entry : fs::directory_iterator(fs::path(modfolder.c_str()).native())) {
+        printf("%ws\n", entry.path().c_str());
+        modlist.Count++;
+    }
+    modlist.Entry = new ModEntry[modlist.Count];
+    
+    int i = 0;
+    for (const auto& entry : fs::directory_iterator(modfolder)) {
+        const wchar_t* path = entry.path().c_str();
+        modlist.Entry[i].hmod = LoadLibraryW(path);
+        if (!modlist.Entry[i].hmod) {
+            printf("Failed to Load Library %ws\n", entry.path().c_str());
+        }
+
+        ModMain modmain = (ModMain)GetProcAddress(modlist.Entry->hmod, "ModMain");
+        if (modmain == NULL) {
+            printf("Failed to load \"%ws\"\n", path);
+        }
+        modlist.Entry->func = modmain;
+    }
+
+    BOOL res = Gravel::Initialize(tGame, app, modfolder);
+
+    return TRUE;
 }

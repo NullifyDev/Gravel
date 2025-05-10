@@ -4,10 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Spade", "Spade\Spade.vcxproj", "{839FBEB0-023C-4049-9B43-44D4480E23E8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{03DD522F-7C1C-4EE1-BCAD-477D9679E3BA} = {03DD522F-7C1C-4EE1-BCAD-477D9679E3BA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gravel", "Gravel\Gravel.vcxproj", "{03DD522F-7C1C-4EE1-BCAD-477D9679E3BA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DFDEE202-148A-45E7-A4E7-50D9BDC264DB} = {DFDEE202-148A-45E7-A4E7-50D9BDC264DB}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mod", "Mod\Mod.vcxproj", "{DFDEE202-148A-45E7-A4E7-50D9BDC264DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mod", "Mod\Cpp\Mod.vcxproj", "{DFDEE202-148A-45E7-A4E7-50D9BDC264DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
